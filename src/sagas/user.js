@@ -14,7 +14,6 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
-import { func } from 'prop-types';
 
 /*---------------------------------
                 LOG IN

@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Route, Switch, HashRouter as Router } from 'react-router-dom';
+import { Route, Switch, HashRouter as Router, Redirect } from 'react-router-dom';
 import Login from '../pages/Login.jsx'
 
 
@@ -16,6 +16,7 @@ class App extends React.Component{
             <div>
                 <Router>
                     <Switch>
+                        <Route exact path="/" render={props => <Redirect to="/auth" />}/>
                         <Route path="/auth" render={props => <Login {...props} />} />
                     </Switch>
                 </Router>

@@ -7,8 +7,6 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Label,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -20,12 +18,7 @@ import {
 } from "reactstrap";
 
 class Login extends React.Component {
-  componentDidMount() {
-    document.body.classList.toggle("login-page");
-  }
-  componentWillUnmount() {
-    document.body.classList.toggle("login-page");
-  }
+  
   render() {
     return (
       <div className="login-page">
@@ -46,7 +39,10 @@ class Login extends React.Component {
                           <i className="nc-icon nc-single-02" />
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input placeholder="First Name..." type="text" />
+                      <Input 
+                        placeholder="Correo..." 
+                        type="text" 
+                        />
                     </InputGroup>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
@@ -55,25 +51,12 @@ class Login extends React.Component {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Password"
+                        placeholder="Contraseña..."
                         type="password"
                         autoComplete="off"
                       />
                     </InputGroup>
                     <br />
-                    <FormGroup>
-                      <FormGroup check>
-                        <Label check>
-                          <Input
-                            defaultChecked
-                            defaultValue=""
-                            type="checkbox"
-                          />
-                          <span className="form-check-sign" />
-                          Subscribe to newsletter
-                        </Label>
-                      </FormGroup>
-                    </FormGroup>
                   </CardBody>
                   <CardFooter>
                     <Button
@@ -83,7 +66,7 @@ class Login extends React.Component {
                       href="#pablo"
                       onClick={e => e.preventDefault()}
                     >
-                      Get Started
+                      Ingresar
                     </Button>
                   </CardFooter>
                 </Card>

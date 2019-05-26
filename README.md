@@ -1,44 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requisitos
+Tener instalado node y react
 
-## Available Scripts
+## Tutoriales
+Curso para principiantes: https://www.youtube.com/watch?v=6Ied4aZxUzc
 
-In the project directory, you can run:
 
-### `npm start`
+## Librerias principales que utiliza el proyecto
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React Router Dom: https://reacttraining.com/react-router/web/guides/quick-start
+- Reactstrap: https://reactstrap.github.io/ 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Pasos para correr el programa
 
-### `npm test`
+- Instalar node y react
+- Bajar el repositorio
+- En la carpeta del repositorio escribir en la console `npm install` . Esto instalará todas las librerias que utliza el proyecto (incluyendo react-router-dom y reactstrap). Lo recomendable es que se corra este comando cada vez que se hace un pull ya que es probable que otro contribuidor haya instalado otra libreria en el proyecto.
+- Después se corre `yarn start` para correr el programa. Este comando inicializará un servidor local en donde se encontrará la Web App. Cualquier cambio que realicen en los archivos hará que la web app se actualice automaticamente.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Para instalar una nueva libreria
+- Para empezar cualquier libreria de node se puede instalar en el proyecto, solo lo tienen que buscar en google. `yarn add (nombre de libreria)` es el equivalente a `npm install (nombre de la libreria)`. Es recomendable utilizar `yarn`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Notas
+¿Diferencia entre `npm install` y `npm install (nombre de la libreria)`? `npm install` instala todas las librerias que se utilizan en el proyecto, mientras `npm install (nombre de la libreria)` instala una libreria nueva en el proyecto
