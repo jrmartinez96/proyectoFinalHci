@@ -23,4 +23,9 @@ Curso para principiantes: https://www.youtube.com/watch?v=6Ied4aZxUzc
 
 
 ## Notas
-¿Diferencia entre `npm install` y `npm install (nombre de la libreria)`? `npm install` instala todas las librerias que se utilizan en el proyecto, mientras `npm install (nombre de la libreria)` instala una libreria nueva en el proyecto
+- ¿Diferencia entre `npm install` y `npm install (nombre de la libreria)`? `npm install` instala todas las librerias que se utilizan en el proyecto, mientras `npm install (nombre de la libreria)` instala una libreria nueva en el proyecto
+
+
+## PARA EL PROYECTO
+- Para trabajar en el Ordenamiento de Palabras creé una carpeta en donde pueden trabajar, se encuentra en `src/views/pages/OrdenamientoDePalabras`. Ya esta creado el componente, solo es de escribir en el render el "html", tambien hay un archivo css que pueden utilizar para los estilos. Si quieren ver como se ve solo inicien el servidor local con `yarn start` y cuando termine de cargar en el url ingresen `localhost:3000/#/ordenamiento`
+- Para trabajar en el Lectura de Palabras creé una carpeta en donde pueden trabajar, se encuentra en `src/views/pages/Lectura`. Ya esta creado el componente, solo es de escribir en el render el "html", tambien hay un archivo css que pueden utilizar para los estilos. Si quieren ver como se ve solo inicien el servidor local con `yarn start` y cuando termine de cargar en el url ingresen `localhost:3000/#/lectura`
