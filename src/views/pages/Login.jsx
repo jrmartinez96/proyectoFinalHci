@@ -16,12 +16,59 @@ import {
   Col,
   Row
 } from "reactstrap";
+import NotificationAlert from "react-notification-alert";
+
+import * as api from '../../api'
 
 class Login extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  onLoginClick = () => {
+    const { email, password } = this.state
+    if(email !== "" && password !== ""){
+      api.signIn(email, password)
+        .then(snap=>{
+          this.notification("success", "Las credenciales son correctas")
+        })
+        .catch(error=>{
+          this.notification("danger", "Se ha iniciado sesión incorrectamente")
+        })
+    } else {
+      this.notification("warning", "Llene todos los campos.")
+    }
+  }
+
+  notification = (type, message) => {
+    const options = {
+        place: "tr",
+        message: (
+            <div style={{fontSize:'1.2rem'}}>
+                <div>
+                    <b>Mensaje:</b>
+                </div>
+                <div>
+                {message}
+                </div>
+            </div>
+        ),
+        type: type,
+        icon: "now-ui-icons ui-1_bell-53",
+        autoDismiss: 7
+    };
+    this.refs.notificationAlert.notificationAlert(options);
+}
   
   render() {
     return (
       <div className="login-page">
+        <NotificationAlert ref="notificationAlert" />
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="4" md="6">
@@ -42,6 +89,8 @@ class Login extends React.Component {
                       <Input 
                         placeholder="Correo..." 
                         type="text" 
+                        value={this.state.email}
+                        onChange={(e)=>this.setState({email: e.target.value})}
                         />
                     </InputGroup>
                     <InputGroup>
@@ -54,6 +103,8 @@ class Login extends React.Component {
                         placeholder="Contraseña..."
                         type="password"
                         autoComplete="off"
+                        value={this.state.password}
+                        onChange={(e)=>this.setState({password: e.target.value})}
                       />
                     </InputGroup>
                     <br />
@@ -63,8 +114,7 @@ class Login extends React.Component {
                       block
                       className="btn-round mb-3"
                       color="warning"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={e => this.onLoginClick()}
                     >
                       Ingresar
                     </Button>
