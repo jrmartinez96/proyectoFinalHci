@@ -17,17 +17,17 @@ function control(text, clickHandler) {
 
 const numberFormat = new Intl.NumberFormat([], { minimumFractionDigits: 2 });
 
-class PlayerControls extends React.Component {
+export default class PlayerControls extends React.Component {
   render() {
     return <div>{this.renderControls()}</div>;
   }
 
   renderControls() {
     const controls = {
-        play: this.props.playStatus === Sound.status.STOPPED,
-        stop: this.props.playStatus !== Sound.status.STOPPED,
-        pause: this.props.playStatus === Sound.status.PLAYING,
-        resume: this.props.playStatus === Sound.status.PAUSED
+      play: this.props.playStatus === Sound.status.STOPPED,
+      stop: this.props.playStatus !== Sound.status.STOPPED,
+      pause: this.props.playStatus === Sound.status.PLAYING,
+      resume: this.props.playStatus === Sound.status.PAUSED
     };
 
     return (
@@ -36,14 +36,22 @@ class PlayerControls extends React.Component {
         <button onClick={this.props.onVolumeDown}>-</button>
         <button onClick={this.props.onVolumeUp}>+</button>
         <ul>
-        {controls.play && control('Play', this.props.onPlay)}
-        {controls.stop && control('Stop', this.props.onStop)}
-        {controls.pause && control('Pause', this.props.onPause)}
-        {controls.resume && control('Resume', this.props.onResume)}
+          {controls.play && control('Play', this.props.onPlay)}
+          {controls.stop && control('Stop', this.props.onStop)}
+          {controls.pause && control('Pause', this.props.onPause)}
+          {controls.resume && control('Resume', this.props.onResume)}
         </ul>
+        <div>
+          Playback Rate:
+          <button onClick={this.props.onPlaybackRateDown}>-</button>
+          {' '}
+          {numberFormat.format(this.props.playbackRate)}
+          {' '}
+          <button onClick={this.props.onPlaybackRateUp}>+</button>
+        </div>
+        Loop?:
+        <input type="checkbox" checked={this.props.loop} onChange={this.props.onToggleLoop} />
       </div>
     );
   }
 }
-
-export default PlayerControls;

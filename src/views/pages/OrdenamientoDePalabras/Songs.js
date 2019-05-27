@@ -1,32 +1,32 @@
 export default [
     {
       url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Primera oracion.mp3',
-      title: 'vocal a',
+      title: 'Primera oración',
       duration: 0
     },
     {
         url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Segunda oracion.mp3',
-        title: 'vocal e',
+        title: 'Segunda oración',
         duration: 0
     },
     {
         url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Tercera oracion.mp3',
-        title: 'vocal i',
+        title: 'Tercera oración',
         duration: 0
     },
     {
         url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Cuarta oracion.mp3',
-        title: 'vocal o',
+        title: 'Cuarta oración',
         duration: 0
     },
     {
         url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Quinta oracion.mp3',
-        title: 'vocal u',
+        title: 'Quinta oración',
         duration: 0
     },
     {
         url: 'https://raw.githubusercontent.com/rmonzon98/Audios/master/vocal/Oraciones/Sexta oracion.mp3',
-        title: 'vocal u',
+        title: 'Sexta oración',
         duration: 0
     }
   ];

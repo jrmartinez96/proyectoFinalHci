@@ -1,16 +1,14 @@
 import React, { Component } from "react";
+import './ordenamiento.css'
 import Card from './Card.js'
 import HTML5Backend from 'react-dnd-html5-backend';
-//import flow from 'lodash/flow'
 import {DragDropContext} from 'react-dnd';
 import ReactDOM from "react-dom";
-import './ordenamiento.css'
+
 import Sound from 'react-sound';
 import PlayerControls from './PlayerControls';
 import SongSelector from './SongSelector';
 import songs from './Songs';
-
-
 const update = require('immutability-helper');
 
 
@@ -26,22 +24,20 @@ class Unscramble extends Component {
     const desordenado = scrambleSentence(newWord);
 
     //Sonidos
-
+    
     this.state = {
-
-       
-      //Sonidos
+      //Palabras
+      word: newWord,
+      scramble: desordenado,
       controlled: true,
-      position: 0,      
+      //sonidos
       currentSong: songs[pos],
+      position: 0,
       volume: 100,
       playbackRate: 1,
       loop: false,
       playStatus: Sound.status.PLAYING,
-      //Palabras
-      word: newWord,
-      scramble: desordenado,
-      
+      //palabras   
       answer: "",
       disabled: false,
       cards: [
@@ -70,6 +66,37 @@ class Unscramble extends Component {
     this.generateNewScramble = this.generateNewScramble.bind(this);
   }
 
+  getStatusText() {
+    switch (this.state.playStatus) {
+      case Sound.status.PLAYING:
+        return 'playing';
+      case Sound.status.PAUSED:
+        return 'paused';
+      case Sound.status.STOPPED:
+        return 'stopped';
+      default:
+        return '(unknown)';
+    }
+  }
+
+  handleSongSelected = (song) => {
+    this.setState({ currentSong: song, position: 0 });
+  }
+
+  handleControlledComponentChange = (ev) => {
+    this.setState({
+      controlled: ev.target.checked,
+      position: 0
+    });
+  }
+
+  renderCurrentSong() {
+    return (
+      <p>
+        Current song {this.state.currentSong.title}. Song is {this.getStatusText()}
+      </p>
+    );
+  }
 
   deleteItem = id => {
     this.setState(prevState => {
@@ -91,89 +118,13 @@ class Unscramble extends Component {
       }),
     )
   }
-
-  handleSongSelected = (song) => {
-    this.setState({ currentSong: song, position: 0 });
-  }
-
-  handleControlledComponentChange = (ev) => {
-    this.setState({
-      controlled: ev.target.checked,
-      position: 0
-    });
-  }
-
-  renderCurrentSong() {
-    return (
-      <p>
-        Current song {this.state.currentSong.title}. Song is {this.getStatusText()}       
-      </p>
-    );
-  }
-
   
-
   render() {
     const { volume, playbackRate, loop } = this.state;
-
-    return (
+    
+    return(
       <div>
         <canvas height="100" width="150" ref="canvas" />
-        <SongSelector
-          selectedSong={this.state.currentSong}
-        />  
-        <PlayerControls
-          playStatus={this.state.playStatus}
-          loop={loop}
-          onPlay={() => this.setState({ playStatus: Sound.status.PLAYING })}
-          onPause={() => this.setState({ playStatus: Sound.status.PAUSED })}
-          onResume={() => this.setState({ playStatus: Sound.status.PLAYING })}
-          onStop={() => this.setState({ playStatus: Sound.status.STOPPED, position: 0 })}
-          onSeek={position => this.setState({ position })}
-          onVolumeUp={() => this.setState({ volume: volume >= 100 ? volume : volume + 10 })}
-          onVolumeDown={() => this.setState({ volume: volume <= 0 ? volume : volume - 10 })}
-          onPlaybackRateUp={() => this.setState({ playbackRate: playbackRate >= 4 ? playbackRate : playbackRate + 0.5 })}
-          onPlaybackRateDown={() => this.setState({ playbackRate: playbackRate <= 0.5 ? playbackRate : playbackRate - 0.5 })}
-          onToggleLoop={e => this.setState({ loop: e.target.checked })}
-          duration={this.state.currentSong ? this.state.currentSong.duration : 0}
-          position={this.state.position}
-          playbackRate={playbackRate}
-        />
-        {this.state.currentSong && (
-          this.state.controlled ? (
-            <Sound
-              url={this.state.currentSong.url}
-              playStatus={this.state.playStatus}
-              position={this.state.position}
-              volume={volume}
-              playbackRate={playbackRate}
-              loop={loop}
-              onLoading={({ bytesLoaded, bytesTotal }) => console.log(`${bytesLoaded / bytesTotal * 100}% loaded`)}
-              onLoad={() => console.log('Loaded')}
-              onPlaying={({ position }) => this.setState({ position })}
-              onPause={() => console.log('Paused')}
-              onResume={() => console.log('Resumed')}
-              onStop={() => console.log('Stopped')}
-              onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
-            />
-          ) : (
-            <Sound
-              url={this.state.currentSong.url}
-              playStatus={this.state.playStatus}
-              playFromPosition={this.state.position}
-              volume={volume}
-              playbackRate={playbackRate}
-              loop={loop}
-              onLoading={({ bytesLoaded, bytesTotal }) => console.log(`${bytesLoaded / bytesTotal * 100}% loaded`)}
-              onLoad={() => console.log('Loaded')}
-              onPlaying={({ position }) => console.log('Position', position)}
-              onPause={() => console.log('Paused')}
-              onResume={() => console.log('Resumed')}
-              onStop={() => console.log('Stopped')}
-              onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
-            />
-          )
-        )}
         <div className="card-container">
             {this.state.cards.map((card, i) => (
               <Card
@@ -204,7 +155,7 @@ class Unscramble extends Component {
     const answer = event.target.value;
     if (answer.toLowerCase() === this.state.word.toLowerCase()) {      
       this.setState({ disabled: true });
-
+      let checkMark = await this.animate(ReactDOM.findDOMNode(this.refs.canvas));
       this.generateNewScramble();
     }
   }
@@ -215,10 +166,13 @@ class Unscramble extends Component {
   }
 
   generateNewScramble() {
-    const newWord = words[Math.floor(Math.random() * words.length)];
+    const pos =Math.floor(Math.random() * words.length);
+    const newWord = words[pos];
     const desordenado = scrambleSentence(newWord);
 
     this.setState({
+      position: pos,      
+      currentSong: songs[pos],
       word: newWord,
       scramble: desordenado,
       answer: "",
@@ -290,7 +244,6 @@ class Unscramble extends Component {
 }
 
 function scrambleSentence(word) {
- 
   let letters = word.split(" ");
   let temp =  letters
   console.log(letters)
