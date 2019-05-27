@@ -11,6 +11,7 @@ import Root from './views/Root';
 
 const configStore = configureStore();
 const { store, persistor } = configStore;
+export const persistora = persistor;
 
 ReactDOM.render(
     <Root store={store} persistor={persistor} />, 

@@ -13,8 +13,9 @@ class Home extends React.Component {
         return(
             <div className="home-page">
                 <Row>
-                    <Col style={{textAlign: 'right'}}>
+                    <Col style={{textAlign: 'right', margin: '20px 20px 0 0'}}>
                         <Button size="sm"
+                            color="danger"
                             onClick={()=>{
                                 const { logout } = this.props;
                                 logout()

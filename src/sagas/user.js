@@ -14,6 +14,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
+import { persistora } from '../index'
 
 /*---------------------------------
                 LOG IN
@@ -22,6 +23,7 @@ function* logInUser(action){
     const { user } = action.payload;
 
     yield put(actions.userLoggedIn(user))
+    persistora.flush()
 }
 
 /*---------------------------------
@@ -32,6 +34,7 @@ function* logOutUser(action){
     yield console.log("User loggin out");
 
     yield put(actions.userLoggedOut());
+    persistora.flush()
 }
 
 /*---------------------------------
