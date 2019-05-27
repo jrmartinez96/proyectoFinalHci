@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import Sound from 'react-sound';
+//import ReactDOM from "react-dom";
+//import Sound from 'react-sound';
 
 class SongSelector extends React.Component {
     
@@ -20,16 +20,10 @@ class SongSelector extends React.Component {
 
     
   render() {
-    return (
-        <p>{Sound.position}</pos>
-        /*<input 
-        id="answer"
-        type="text"
-        value={this.state.answer}
-        onChange={this.handleChange}
-        readOnly={this.state.disabled ? "readonly" : ""}
-        />*/
-        
+    return (      
+      <div>
+
+      </div>
     );
   }
 
