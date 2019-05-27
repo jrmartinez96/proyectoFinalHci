@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import "bootstrap/dist/css/bootstrap.css";
+import "assets/scss/paper-dashboard.scss";
+
 import configureStore from './configureStore';
 import Root from './views/Root';
 

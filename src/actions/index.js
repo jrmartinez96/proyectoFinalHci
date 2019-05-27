@@ -15,6 +15,27 @@ import * as types from '../types';
 /*===========================================================
                         STATE ACTIONS
 =============================================================*/
+/** 
+ * !----------------------------------
+ *                REDIRECTING
+ * !----------------------------------
+ */
+
+export const pathRedirected = (path) => (
+    {
+        type: types.PATH_REDIRECTED,
+        payload:{
+            path,
+        }
+    }
+)
+
+export const finishRedirected = () => (
+    {
+        type: types.FINISH_REDIRECTED,
+        payload: {}
+    }
+)
 
 /** 
  * !----------------------------------
@@ -40,6 +61,28 @@ export const userLoggedOut = () => (
 /*===========================================================
                         SAGA ACTIONS
 =============================================================*/
+
+
+/** 
+ * !----------------------------------
+ *                REDIRECTING
+ * !----------------------------------
+ */
+export const pathRedirecting = ( path ) => (
+    {
+        type: types.PATH_REDIRECTING,
+        payload:{
+            path,
+        }
+    }
+)
+
+export const finishRedirecting = () => (
+    {
+        type: types.FINISH_REDIRECTING,
+        payload: {}
+    }
+)
 
 /** 
  * !----------------------------------

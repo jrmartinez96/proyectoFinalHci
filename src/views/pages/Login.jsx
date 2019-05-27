@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
+import * as selectors from 'reducers';
+import * as actions from 'actions';
 
 // reactstrap components
 import {
@@ -32,13 +35,22 @@ class Login extends React.Component {
 
   onLoginClick = () => {
     const { email, password } = this.state
+    const { login } = this.props;
     if(email !== "" && password !== ""){
-      api.signIn(email, password)
+      api.getUserInfoFromFirestore(email)
         .then(snap=>{
-          this.notification("success", "Las credenciales son correctas")
-        })
-        .catch(error=>{
-          this.notification("danger", "Se ha iniciado sesión incorrectamente")
+          if(snap.docs.length > 0){
+            api.signIn(email, password)
+              .then(snap=>{
+                login(email, password);
+              })
+              .catch(error=>{
+                this.notification("danger", error.message)
+              })
+          } else {
+            this.setState({loading: false})
+            this.notification("warning", "Este usuario no existe.")
+          }
         })
     } else {
       this.notification("warning", "Llene todos los campos.")
@@ -129,4 +141,18 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => (
+  {
+      currentUser: selectors.getCurrentUser(state),
+  }
+)
+
+const mapDispatchToProps = (dispatch) => (
+  {
+      login: (data) => {
+        dispatch(actions.userLogginIn(data))
+      }
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
