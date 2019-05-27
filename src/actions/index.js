@@ -46,12 +46,11 @@ export const userLoggedOut = () => (
  *                USER
  * !----------------------------------
  */
-export const userLogginIn = (username, password) => (
+export const userLogginIn = (user) => (
     {
         type: types.USER_LOGGIN_IN,
         payload: { 
-            username,
-            password,
+            user
         }
     }
 )

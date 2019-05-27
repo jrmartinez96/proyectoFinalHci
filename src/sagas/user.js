@@ -19,12 +19,9 @@ import * as actions from '../actions';
                 LOG IN
 -----------------------------------*/
 function* logInUser(action){
-    const { username, password } = action.payload;
+    const { user } = action.payload;
 
-    // TODO: API CALL
-    yield console.log("Username: ", username, "\nPassword: ", password)
-
-    yield put(actions.userLoggedIn({username, password}))
+    yield put(actions.userLoggedIn(user))
 }
 
 /*---------------------------------
