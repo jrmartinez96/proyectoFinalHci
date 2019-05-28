@@ -1,0 +1,33 @@
+var head = document.getElementsByTagName('HEAD')[0];  
+  
+        // Create new link Element 
+        var link = document.createElement('link'); 
+  
+        // set the attributes for link element  
+        link.rel = 'stylesheet';  
+      
+        link.type = 'text/css'; 
+      
+        link.href = 'Disenio.css';  
+  
+        // Append link element to HTML head 
+        head.appendChild(link);
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+card{
+  width: 300px;
+  padding: 25px;
+  box-sizing: border-box;
+  background-color: lightblue;
+}
