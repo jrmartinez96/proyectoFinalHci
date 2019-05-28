@@ -1579,7 +1579,7 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-asap@~2.0.3, asap@~2.0.6:
+asap@^2.0.6, asap@~2.0.3, asap@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
@@ -3293,6 +3293,11 @@ deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
+deepmerge@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.2.0.tgz#58ef463a57c08d376547f8869fdc5bcee957f44e"
+  integrity sha512-6+LuZGU7QCNUnAJyX8cIrlzoEgggTM6B7mm+znKOX4t5ltluT9KLjN6g61ECMS0LTsLW7yDpNoxhix5FZcrIow==
+
 default-gateway@^2.6.0:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/default-gateway/-/default-gateway-2.7.2.tgz#b7ef339e5e024b045467af403d50348db4642d0f"
@@ -3433,6 +3438,15 @@ dir-glob@^2.0.0:
   dependencies:
     arrify "^1.0.1"
     path-type "^3.0.0"
+
+dnd-core@^7.4.4:
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-7.4.4.tgz#9a27d991a1c1e2882fa7888ea6132db04c739db1"
+  integrity sha512-xR8SINDCJG9AmKSjXUMJ1PEl8ih1+xSHH8x4DgBtzScXnEtpCnV1ibDZNV0uyps9VgkXTTbYYzJdF04y0v0e3Q==
+  dependencies:
+    asap "^2.0.6"
+    invariant "^2.2.4"
+    redux "^4.0.1"
 
 dns-equal@^1.0.0:
   version "1.0.0"
@@ -4933,6 +4947,13 @@ hoist-non-react-statics@^3.1.0:
   dependencies:
     react-is "^16.3.2"
 
+hoist-non-react-statics@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
+  integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
+  dependencies:
+    react-is "^16.7.0"
+
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -5154,6 +5175,13 @@ immer@1.7.2:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.7.2.tgz#a51e9723c50b27e132f6566facbec1c85fc69547"
   integrity sha512-4Urocwu9+XLDJw4Tc6ZCg7APVjjLInCFvO4TwGsAYV5zT6YYSor14dsZR0+0tHlDIN92cFUOq+i7fC00G5vTxA==
 
+immutability-helper@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-3.0.0.tgz#a74e989c60e2ddab85a6abeed8078981b2d13271"
+  integrity sha512-Ww7oOSnBIRb9ihT9UH9eHz0uhie0rw9bpqGYCb7qD5VpsdOLv+fx/KCRgHqvX/13LgSM5sDfsLpeSIM6kodUxQ==
+  dependencies:
+    invariant "^2.2.4"
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -5288,7 +5316,7 @@ internal-ip@^3.0.1:
     default-gateway "^2.6.0"
     ipaddr.js "^1.5.2"
 
-invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.1.0, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -6411,6 +6439,11 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+  integrity sha1-BJGTngvuVkPuSUp+PaPSuscMbKQ=
+
 loader-fs-cache@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/loader-fs-cache/-/loader-fs-cache-1.0.1.tgz#56e0bf08bd9708b26a765b68509840c8dec9fdbc"
@@ -6515,6 +6548,11 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
+lodash.flow@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.flow/-/lodash.flow-3.5.0.tgz#87bf40292b8cf83e4e8ce1a3ae4209e20071675a"
+  integrity sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=
 
 lodash.isarguments@^3.0.0:
   version "3.1.0"
@@ -8593,6 +8631,15 @@ prop-types@15.6.2, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, 
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.5.6:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 protobufjs@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-5.0.3.tgz#e4dfe9fb67c90b2630d15868249bcc4961467a17"
@@ -8886,6 +8933,23 @@ react-dev-utils@^6.0.5:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
+react-dnd-html5-backend@^7.4.4:
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-7.4.4.tgz#3372e5af4af24f680cd75900c782606539c01220"
+  integrity sha512-X/lP92ateY0glHan8mU0JzjBuZL6VHv2Gc/H9OBBxaf/ZCN1oC16MLKdesqG4x1f/NWFTNtuG3W4B99r5gPVog==
+  dependencies:
+    dnd-core "^7.4.4"
+
+react-dnd@^7.4.5:
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-7.4.5.tgz#cb4a2c97cd81f514d892c6cc2f020908ca7382a5"
+  integrity sha512-/689FECqmfNxHZJymC0Ge0Vt5A2oxXwcpVpFjM7O21ifzSh3YtZl83rre6Cosdc4Sx9ucrMq3sRxKMH9p/ekCg==
+  dependencies:
+    dnd-core "^7.4.4"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.1.0"
+    shallowequal "^1.1.0"
+
 react-dom@16.6.0:
   version "16.6.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.0.tgz#6375b8391e019a632a89a0988bce85f0cc87a92f"
@@ -8930,6 +8994,11 @@ react-is@^16.3.2, react-is@^16.6.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha512-u7FDWtthB4rWibG/+mFbVd5FvdI20yde86qKGx4lVUTWmPlSWQ4QxbBIrrs+HnXGbxOUlUzTAP/VDmvCwaP2yA==
 
+react-is@^16.7.0, react-is@^16.8.1:
+  version "16.8.6"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
+  integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+
 react-jvectormap@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/react-jvectormap/-/react-jvectormap-0.0.4.tgz#9baa3e8cca1dd5ca2df087a2509137fae2e73ef7"
@@ -8966,6 +9035,15 @@ react-overlays@^0.8.3:
     prop-types-extra "^1.0.1"
     react-transition-group "^2.2.0"
     warning "^3.0.0"
+
+react-player@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/react-player/-/react-player-1.11.0.tgz#07437dfa1baae8ab027409df9adb93fe81b44efb"
+  integrity sha512-KPvIK2gonPth3sIHWRSllFTNBRnAxR2jL9ofuOIQH2o/zAnkYoKFEGg9PFjy5xMEgOM8NUUrGTcG/6A3BbpSnQ==
+  dependencies:
+    deepmerge "^3.0.0"
+    load-script "^1.0.0"
+    prop-types "^15.5.6"
 
 react-popper@^0.10.4:
   version "0.10.4"
@@ -9079,6 +9157,14 @@ react-select@2.1.1:
     raf "^3.4.0"
     react-input-autosize "^2.2.1"
     react-transition-group "^2.2.1"
+
+react-sound@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-sound/-/react-sound-1.2.0.tgz#1bb7e1ec8494ecc57b03dbdecd1496b10f6541f2"
+  integrity sha512-pc2l8f7Oy3VePRRVesBwSSJ0mrCeD/lE5GVCT1RPdEQ7lgbZTDyWI8HokXHmS1v79aiLnd3WTRhfsBAY0NTb8g==
+  dependencies:
+    prop-types "^15.5.7"
+    soundmanager2 "^2.97.20170602"
 
 react-table@6.8.6:
   version "6.8.6"
@@ -9791,6 +9877,11 @@ shallow-clone@^1.0.0:
     kind-of "^5.0.0"
     mixin-object "^2.0.1"
 
+shallowequal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -9896,6 +9987,11 @@ sockjs@0.3.19:
   dependencies:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
+
+soundmanager2@^2.97.20170602:
+  version "2.97.20170602"
+  resolved "https://registry.yarnpkg.com/soundmanager2/-/soundmanager2-2.97.20170602.tgz#fe3bc731bfc4d54c1364e71980263e6816981879"
+  integrity sha512-2ee7ES9SJ++WkD7PGHMeT4QUuJr7uC3wacD6RoCDlKjdSp9lpEOaKm3lKWKld119DLILjS2l9U6xpXJN6U0KPQ==
 
 source-list-map@^2.0.0:
   version "2.0.1"
@@ -10005,6 +10101,11 @@ spdy@^3.4.1:
     safe-buffer "^5.0.1"
     select-hose "^2.0.0"
     spdy-transport "^2.0.18"
+
+speech-to-text@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/speech-to-text/-/speech-to-text-2.9.1.tgz#4b38c2fc3ccbfcd56b5517dd8ca0203958ad9c4f"
+  integrity sha512-hU+AEw4Aq8ixVu046vTMihkpXVNCpKzlUruOD+rcenoD8llEVqpOZq7rRo2vY2Tdyn88JuKcHjL1+pG9Rx7kgQ==
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"

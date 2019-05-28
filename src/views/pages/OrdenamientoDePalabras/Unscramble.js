@@ -9,8 +9,9 @@ import Sound from 'react-sound';
 import PlayerControls from './PlayerControls';
 import SongSelector from './SongSelector';
 import songs from './Songs';
-const update = require('immutability-helper');
+import ReactPlayer from 'react-player'
 
+const update = require('immutability-helper');
 
 class Unscramble extends Component {
   
@@ -24,7 +25,7 @@ class Unscramble extends Component {
     const desordenado = scrambleSentence(newWord);
 
     //Sonidos
-    
+    console.log(songs[pos])
     this.state = {
       //Palabras
       word: newWord,
@@ -124,6 +125,11 @@ class Unscramble extends Component {
     
     return(
       <div>
+        <ReactPlayer
+          playing
+          url={this.state.currentSong.url}
+          style={{display: 'none'}}
+        />
         <canvas height="100" width="150" ref="canvas" />
         <div className="card-container">
             {this.state.cards.map((card, i) => (
