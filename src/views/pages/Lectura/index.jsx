@@ -1,6 +1,6 @@
 import React from 'react';
 import './lectura.css'
-import { Card, CardBody, Row, Col, Button } from 'reactstrap';
+import { Card, CardBody, Row, Col, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import randomWords from 'random-spanish-words'
 import SpeechToText from 'speech-to-text'
@@ -14,7 +14,8 @@ class Lectura extends React.Component {
             listening: false,
             texto: '',
             finalisedText: '',
-            score: 0
+            score: 0,
+            instruccionesModal: false
         }
     }
 
@@ -112,6 +113,10 @@ class Lectura extends React.Component {
                     <CardBody>
                         <Row>
                             <Col>
+                                <Button size="sm" onClick={()=>this.setState({instruccionesModal: true})} color="info">
+                                    Instrucciones
+                                </Button>
+                                <br/>
                                 <Button
                                     onClick={()=>this.generarNuevaPalabra()}
                                 >
@@ -127,7 +132,7 @@ class Lectura extends React.Component {
                                 <h3 style={{margin: '0', fontSize: '5rem'}}>{this.state.word}</h3>
                             </Col>
                         </Row>
-                        <div style={{textAlign: 'center', fontSize: '2.5rem'}}>
+                        <div style={{textAlign: 'center', fontSize: '2rem'}}>
                             <Button 
                                 className="btn-icon btn-round"
                                 onClick={()=>{
@@ -149,7 +154,29 @@ class Lectura extends React.Component {
                                 null
                             }
                         </div>
-                        Palabra escuchada: {this.state.finalisedText}
+                        <Row>
+                            <Col>
+                                Palabra escuchada: {this.state.finalisedText}
+                            </Col>
+                            <Col style={{textAlign: 'right'}}>
+                                
+                            </Col>
+                        </Row>
+                        <Modal isOpen={this.state.instruccionesModal} toggle={()=>this.setState({instruccionesModal: false})}>
+                            <ModalHeader>
+                                <div style={{fontSize: '2rem'}}>
+                                    Instrucciones
+                                </div>
+                            </ModalHeader>
+                            <ModalBody>
+                                <div style={{fontSize: '1.5rem'}}>
+                                    Presiona el botón de "escuchar" y lee la palabra que se muestra en grande. Al finalizar vuelve a presionar el botón y espera tus resultados.
+                                    <br/>
+                                    <br/>
+                                    Si quieres una nueva palabra presiona el botón de "generar".
+                                </div>
+                            </ModalBody>
+                        </Modal>
                     </CardBody>
                 </Card>
             </div>

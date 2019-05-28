@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import * as selectors from 'reducers';
 import * as actions from 'actions';
+import { NavLink } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -85,7 +86,7 @@ class Login extends React.Component {
           <Row>
             <Col className="ml-auto mr-auto" lg="4" md="6">
               <Form action="" className="form" method="">
-                <Card className="card-login">
+                <Card className="card-login" style={{marginTop: '150px'}}>
                   <CardHeader>
                     <CardHeader>
                       <h3 className="header text-center">Login</h3>
@@ -125,11 +126,21 @@ class Login extends React.Component {
                     <Button
                       block
                       className="btn-round mb-3"
-                      color="warning"
+                      color="success"
                       onClick={e => this.onLoginClick()}
                     >
                       Ingresar
                     </Button>
+                    <br/>
+                    <div style={{textAlign: 'center'}}>
+                      <NavLink to="/crear-usuario">
+                        Crear mi usuario
+                      </NavLink>
+                      <br/>
+                      <NavLink to="/forgot-password">
+                        Olvide mi contraseña
+                      </NavLink>
+                    </div>
                   </CardFooter>
                 </Card>
               </Form>

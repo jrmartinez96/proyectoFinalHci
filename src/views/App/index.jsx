@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { Route, HashRouter as Router, Redirect } from 'react-router-dom';
 
 import Redirecting from '../../components/Redirecting';
+import ForgotPassword from 'views/pages/ForgotPassword';
+import CrearUsuario from 'views/pages/CrearUsuario'
 import Login from '../pages/Login.jsx'
 import Home from '../pages/Home'
 import Ordenamiento from '../pages/OrdenamientoDePalabras'
@@ -53,6 +55,12 @@ class App extends React.Component{
                             }
 
                             return <Redirect to="/auth"/>
+                        }}/>
+                        <Route exact path="/forgot-password" render={props => {
+                            return <ForgotPassword {...props}/>
+                        }}/>
+                        <Route exact path="/crear-usuario" render={props => {
+                            return <CrearUsuario {...props}/>
                         }}/>
                     </div>
                 </Router>
