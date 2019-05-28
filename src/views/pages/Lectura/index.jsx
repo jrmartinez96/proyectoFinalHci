@@ -14,6 +14,7 @@ class Lectura extends React.Component {
             listening: false,
             texto: '',
             finalisedText: '',
+            score: 0
         }
     }
 
@@ -64,15 +65,18 @@ class Lectura extends React.Component {
     }
 
     compararPalabras = (palabraEscuchada) => {
-        if(palabraEscuchada === this.state.word){
+        if(palabraEscuchada.toLowerCase() === this.state.word){
             this.notification("success", "Correcto! Lee la siguiente palabra!")
             this.generarNuevaPalabra()
+            this.setState({score: this.state.score + 1})
+        } else {
+            this.notification("danger", "Incorrecto! Intenta de nuevo, o genera una nueva palabra")
         }
     }
 
     notification = (type, message) => {
         const options = {
-            place: "tr",
+            place: "bc",
             message: (
                 <div style={{fontSize:'1.2rem'}}>
                     <div>
@@ -104,7 +108,7 @@ class Lectura extends React.Component {
                     </Col>
                 </Row>
                 <br/>
-                <Card style={{width: '700px', margin: '0 auto'}}>
+                <Card style={{width: '700px', margin: '50px auto'}}>
                     <CardBody>
                         <Row>
                             <Col>
@@ -114,13 +118,16 @@ class Lectura extends React.Component {
                                     Generar
                                 </Button>
                             </Col>
+                            <Col style={{textAlign: 'right', fontSize: '2rem'}}>
+                                Puntaje: {this.state.score}
+                            </Col>
                         </Row>
                         <Row>
                             <Col style={{textAlign: 'center'}}>
-                                <h3 style={{margin: '0'}}>{this.state.word}</h3>
+                                <h3 style={{margin: '0', fontSize: '5rem'}}>{this.state.word}</h3>
                             </Col>
                         </Row>
-                        <div style={{textAlign: 'center'}}>
+                        <div style={{textAlign: 'center', fontSize: '2.5rem'}}>
                             <Button 
                                 className="btn-icon btn-round"
                                 onClick={()=>{
@@ -131,6 +138,7 @@ class Lectura extends React.Component {
                                     }
                                 }}
                                 color={this.state.listening ? "danger": "success"}
+                                style={{width: '5rem', height: '5rem', fontSize: '2rem', borderRadius: '50%'}}
                             >
                                 <i className="fa fa-microphone"/>
                             </Button>
@@ -141,7 +149,7 @@ class Lectura extends React.Component {
                                 null
                             }
                         </div>
-                        {this.state.finalisedText}
+                        Palabra escuchada: {this.state.finalisedText}
                     </CardBody>
                 </Card>
             </div>

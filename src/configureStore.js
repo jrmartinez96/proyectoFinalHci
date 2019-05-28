@@ -21,7 +21,7 @@ import mainSaga from './sagas';
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancer = compose(
     applyMiddleware(sagaMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 // PERSIST REDUCER
