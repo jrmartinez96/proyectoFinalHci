@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './lectura.css'
 import { Card, CardBody, Row, Col, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import randomWords from 'random-spanish-words'
 import SpeechToText from 'speech-to-text'
 import NotificationAlert from "react-notification-alert";
+import { dateInput } from 'formatDate.js'
+import * as api from '../../../api';
+import * as selectors from 'reducers';
 
 class Lectura extends React.Component {
     constructor(){
@@ -36,10 +40,11 @@ class Lectura extends React.Component {
           };
       
         const onFinalised = text => {
-            console.log("finalised")
+
             this.setState({
               finalisedText: text,
-              texto: ''
+              texto: '',
+              listening: false
             });
             this.compararPalabras(text)
         };
@@ -49,6 +54,19 @@ class Lectura extends React.Component {
         } catch (error) {
             this.setState({ error: error.message });
         }
+
+        const { id } = this.props.currentUser.extra
+        const currentDate = dateInput(new Date())
+        api.userScoreRef(id, currentDate).onSnapshot(
+            snap=>{
+                const data = snap.data()
+                if(data){
+                    if(data.score){
+                        this.setState({score:data.score})
+                    }
+                }
+            }
+        )
     }
 
     generarNuevaPalabra = () => {
@@ -69,7 +87,11 @@ class Lectura extends React.Component {
         if(palabraEscuchada.toLowerCase() === this.state.word){
             this.notification("success", "Correcto! Lee la siguiente palabra!")
             this.generarNuevaPalabra()
-            this.setState({score: this.state.score + 1})
+
+            const { id } = this.props.currentUser.extra
+            const currentDate = dateInput(new Date())
+            api.addScoreToUser(id, currentDate, {score: this.state.score + 1})
+
         } else {
             this.notification("danger", "Incorrecto! Intenta de nuevo, o genera una nueva palabra")
         }
@@ -175,6 +197,12 @@ class Lectura extends React.Component {
                                     <br/>
                                     Si quieres una nueva palabra presiona el botón de "generar".
                                 </div>
+                                <br/>
+                                <div style={{textAlign: 'center'}}>
+                                    <Button onClick={()=>this.setState({instruccionesModal: false})}>
+                                        Cerrar
+                                    </Button>
+                                </div>
                             </ModalBody>
                         </Modal>
                     </CardBody>
@@ -184,4 +212,10 @@ class Lectura extends React.Component {
     }
 }
 
-export default Lectura;
+const mapStateToProps = (state) => (
+    {
+        currentUser: selectors.getCurrentUser(state),
+    }
+)
+
+export default connect(mapStateToProps, null)(Lectura);

@@ -40,10 +40,15 @@ class Login extends React.Component {
     if(email !== "" && password !== ""){
       api.getUserInfoFromFirestore(email)
         .then(snap=>{
+          const userDoc = snap.docs[0]
           if(snap.docs.length > 0){
             api.signIn(email, password)
-              .then(snap=>{
-                login(email, password);
+              .then(s=>{
+                const data = {
+                  email: email,
+                  extra: {...userDoc.data(), id: userDoc.id}
+                }
+                login(data);
               })
               .catch(error=>{
                 this.notification("danger", error.message)

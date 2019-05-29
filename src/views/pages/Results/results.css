@@ -1,0 +1,11 @@
+.results-page{
+    width: 100%;
+    height: 100vh;
+    background: skyblue;
+    overflow: hidden;
+}
+
+.graphic-card{
+    width: 90%;
+    margin: 100px auto 0 auto;
+}

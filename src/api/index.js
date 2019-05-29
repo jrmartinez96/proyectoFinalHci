@@ -30,3 +30,15 @@ export const getUserInfoFromFirestore = (email) => (
 export const logoutFirebaseAuth = () => (
     auth.signOut()
 )
+
+export const addScoreToUser = (user_id, date, data) => (
+    db.collection("users").doc(user_id).collection("scores").doc(date).set(data)
+)
+
+export const userScoreRef = (user_id, date) => (
+    db.collection("users").doc(user_id).collection("scores").doc(date)
+)
+
+export const getResults = (user_id) => (
+    db.collection("users").doc(user_id).collection("scores")
+)

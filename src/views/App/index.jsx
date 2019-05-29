@@ -11,6 +11,7 @@ import Login from '../pages/Login.jsx'
 import Home from '../pages/Home'
 import Ordenamiento from '../pages/OrdenamientoDePalabras'
 import Lectura from '../pages/Lectura'
+import Results from '../pages/Results'
 
 import * as selectors from 'reducers';
 
@@ -52,6 +53,13 @@ class App extends React.Component{
                         <Route path="/lectura" render={props => {
                             if(isLoggedIn){
                                 return <Lectura {...props} />
+                            }
+
+                            return <Redirect to="/auth"/>
+                        }}/>
+                        <Route path="/results" render={props => {
+                            if(isLoggedIn){
+                                return <Results {...props} />
                             }
 
                             return <Redirect to="/auth"/>
